@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.button {
+    @apply w-4/5 py-2 bg-[#133E87] text-white font-semibold rounded-[20px] mt-2 mb-2;
+    
+}
