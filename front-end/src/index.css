@@ -6,3 +6,26 @@
     @apply w-4/5 py-2 bg-[#133E87] text-white font-semibold rounded-[20px] mt-2 mb-2;
     
 }
+
+/* Style commun pour tous les input et textarea  de demnde de Devis*/
+.inputdemande {
+    width: 100%;
+    border: 1px solid #C0C0C0; /* couleur "coco" pour la bordure */
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+  }
+  
+  /* Placeholder color */
+  .inputdemande::placeholder {
+    color: grey-500; /* couleur spécifiée pour le placeholder */
+  }
+  
+  /* Focus effect for inputs */
+  .inputdemande:focus {
+    outline: none;
+    border-color: #133E87; /* couleur de focus (bleu clair) */
+    
+  }
+  

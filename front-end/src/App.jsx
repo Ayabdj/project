@@ -4,7 +4,10 @@ import HomePage from "./pages/HomePage";
 import Login from "./pages/login";
 import Signup from "./pages/Signup";
 import Verification from "./pages/OTPVerfication";
-import Layout from "./components/common/layout"
+import Layout from "./components/common/layout";
+import DemandeDevis from "./components/Devis/DemandeForm";
+import PropositionDevis from "./components/Devis/PropositionForm"
+import JoinUS from "./components/JoinUs/JoinusForm"
 
 function App() {
   return (
@@ -15,6 +18,11 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/verification" element={<Verification />} />
+        <Route path="/DemandeDevis" element={<Layout><DemandeDevis/></Layout>} /> 
+        <Route path="/PropositionDevis" element={<Layout><PropositionDevis/></Layout>} />
+        <Route path="/JoinUs" element={<Layout><JoinUS/></Layout>} />
+
+
       </Routes>
     </Router>
   );

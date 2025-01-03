@@ -1,27 +1,35 @@
 import React, { useState } from "react";
-import { FaEye, FaEyeSlash } from "react-icons/fa"; 
-
 
 const SignupForm = () => {
   const [nom, setNom] = useState("");
   const [prenom, setPrenom] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false); 
+  const [confirmPassword, setConfirmPassword] = useState("");  // Champ de confirmation du mot de passe
+  const [passwordError, setPasswordError] = useState(""); // Erreur si les mots de passe ne correspondent pas
 
   const handleInputChange = (setter) => (e) => {
-    setter(e.target.value); 
+    setter(e.target.value);
+    
+    if (passwordError) {
+      setPasswordError("");
+    }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Vérification que les mots de passe correspondent
+    if (password !== confirmPassword) {
+      setPasswordError("Les mots de passe ne correspondent pas.");
+      return;
+    }
+
+    
     console.log("Nom:", nom);
     console.log("Prénom:", prenom);
     console.log("Email:", email);
     console.log("Mot de Passe:", password);
-  };
-
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword); 
   };
 
   return (
@@ -45,7 +53,7 @@ const SignupForm = () => {
           />
         </div>
 
-       {/* Pour le prénomm : */}
+        {/* Pour le prénom : */}
         <div className="space-y-2">
           <label htmlFor="prenom" className="block text-sm font-medium text-gray-700">
             Prénom
@@ -79,38 +87,44 @@ const SignupForm = () => {
           />
         </div>
 
-       {/* Pour le mdp : */}
-        <div className="relative">
-          <div className="space-y-2">
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-              Mot de Passe
-            </label>
-            <input
-              id="password"
-              name="password"
-              type={showPassword ? "text" : "password"}
-              placeholder="Mot de Passe"
-              value={password}
-              onChange={handleInputChange(setPassword)}
-              required
-              className="w-full p-3 border border-gray-400 rounded-lg text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary"
-            />
-          </div>
-
-          {/* pour cacher/montrer le mdp: */}
-          {password && (
-          <button
-            type="button"
-            onClick={togglePasswordVisibility}
-            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-lg text-gray-600"
-          >
-            {showPassword ? <FaEyeSlash /> : <FaEye />} 
-          </button>
-          )}
-          
+        {/* Pour le mot de passe : */}
+        <div className="space-y-2">
+          <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+            Mot de Passe
+          </label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            placeholder="Mot de Passe"
+            value={password}
+            onChange={handleInputChange(setPassword)}
+            required
+            className="w-full p-3 border border-gray-400 rounded-lg text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary"
+          />
         </div>
 
+        {/* Pour la confirmation du mot de passe : */}
+        <div className="space-y-2">
+          <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
+            Confirmer le Mot de Passe
+          </label>
+          <input
+            id="confirmPassword"
+            name="confirmPassword"
+            type="password"
+            placeholder="Confirmer le Mot de Passe"
+            value={confirmPassword}
+            onChange={handleInputChange(setConfirmPassword)}
+            required
+            className="w-full p-3 border border-gray-400 rounded-lg text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary"
+          />
+        </div>
 
+        {/* Afficher l'erreur si les mots de passe ne correspondent pas */}
+        {passwordError && <p className="text-red-500 text-sm">{passwordError}</p>}
+
+        {/* Bouton d'inscription */}
         <div className="flex justify-center mt-10">
           <button className="button" type="submit">S'inscrire</button>
         </div>
