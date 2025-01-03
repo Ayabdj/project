@@ -5,9 +5,9 @@ import Login from "./pages/login";
 import Signup from "./pages/Signup";
 import Verification from "./pages/OTPVerfication";
 import Layout from "./components/common/layout";
-import DemandeDevis from "./components/Devis/DemandeForm";
-import PropositionDevis from "./components/Devis/PropositionForm"
-import JoinUS from "./components/JoinUs/JoinusForm"
+import DemandeDevis from "./pages/DemandeDevis"
+import PropositionDevis from "./pages/PropositionDevis"
+import JoinUS from "./pages/Joinus"
 
 function App() {
   return (
